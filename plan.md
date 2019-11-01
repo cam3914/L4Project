@@ -9,18 +9,18 @@ Week-by-week plan for the whole project. Update this as you go along.
 
 ## Winter semester
 
-* **Week 1**
-* **Week 2**
-* **Week 3**
-* **Week 4**
-* **Week 5**
-* **Week 6**
-* **Week 7**
-* **Week 8**
-* **Week 9**
-* **Week 10**
-* **Week 11 [PROJECT WEEK]**
-* **Week 12 [PROJECT WEEK]** Status report submitted.
+* **Week 1** N/A
+* **Week 2** N/A
+* **Week 3** Got project, research topic
+* **Week 4** First meeting
+* **Week 5** Decide on technology, init repo and familiarisation
+* **Week 6** Import and parse data, setup CI
+* **Week 7** Set up evaluation and data visualisation
+* **Week 8** Predict single spectrum, presence or absence
+* **Week 9** Increase complexity / design neural network(s)
+* **Week 10** Optimisation
+* **Week 11 [PROJECT WEEK]** Optimisation
+* **Week 12 [PROJECT WEEK]** Optimisation and submit status report.
 
 ## Winter break
 
