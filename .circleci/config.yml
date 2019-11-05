@@ -52,7 +52,7 @@ jobs:
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
         
-     - run:
+      - run:
           name: run tests
           command: |
             . venv/bin/activate
