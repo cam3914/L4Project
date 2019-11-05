@@ -1,3 +1,4 @@
 project-workspace.code-workspace
 data/raw/*
+!data/raw/example.mgf
 .vscode/settings.json
