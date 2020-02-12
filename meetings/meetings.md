@@ -38,3 +38,56 @@
 * Sent link to github repository
 
 ## 8th November
+
+* More data, start with unique spectra
+* New data has mass tags cleaned up
+* Binning spectra - dont start at 1 as masses tend towards whole numbers so a split at integers would split grouped data points
+* Can get inchikey from smiles, not other way around
+* Chem spider - database of structures to search for SMILES if needed
+* spectrum_utils for displaying spectra (or just do it with matplotlib etc)
+* Next meeting Tuesday 12th 15:00 in 1028 lab
+
+## 12th November
+
+* Haven't had time to do much since te last meeting
+* Having rdkit and package issues
+* CI good for grades but need to get started on the ML
+* Next meeting 22nd Nov at 1.30pm
+
+## 22nd November
+
+* Confirmed specifics, project is using data from ESI-MS\MS
+* Google Brain paper does not use tandem MS but does not matter as it is higher energy and produces fragments, same result as ESI-MS/MS
+* No feasible way to evaluate unidentified spectra, create a training and test split in the data
+* Metfrag is the best performing method of predicting structure from spectra, still not great and slow
+* Structure to spectra is the preferred method to augment spectral libraries with synthetic data
+* CFM-ID created bad data which had to be removed from METLIN
+* Next meeting 2.30 on Friday the 29th
+
+## 29th November
+
+* Brief meeting, not much to discuss as not much progress
+
+## 21st January
+
+* Update on progress
+* Need to find difference between ECFPs and Morgan fingerprints
+* Clarification on predicting single spectra 
+* Check how google brain paper deals with lost masses
+
+## 28th January
+
+* No meeting
+
+## 4th February
+
+* Morgan fingerprints appear to be interchangeable with ECFPs
+* Confirmed binning method is correct, summing intensities in bins
+* Bins need to be max size 1 to be effective
+* Molecules with rdkit read errors can be ignored, probably poor data
+* Need to start thinking about evaluation, possibly an intelligent guesser based on most similar peaks
+* Could normalize by log
+
+## 12 February
+
+* No meeting, email progress update
