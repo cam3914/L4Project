@@ -1,12 +1,12 @@
-# Guidance
-This is a suggested template for a project. You can modify it as you please, but
-but remember to keep:
+# Build Instructions
 
-* a timelog, updated regularly in the `timelog.md` format;
-* all source under version control;
-* data well organised and with appropriate ethical approval (for human subject data);
+RDkit: ([install instructions](https://www.rdkit.org/docs/Install.html))
+* package manager - `sudo apt-get install python-rdkit librdkit1 rdkit-data`
+* conda - `conda install -c conda-forge rdkit`
 
-Here's an overview of the structure as it stands:
+Other requirements:```pip install -r requirements.txt```
+
+# Project Structure
 
 * `timelog.md` The time log for your project.
 * `plan.md` A skeleton week-by-week plan for the project. 
@@ -17,11 +17,6 @@ Here's an overview of the structure as it stands:
 * `dissertation/` source and for your project dissertation
 * `presentation/` your presentation
 
-* Make sure you add a `.gitignore` or similar for your VCS for the tools you are using!
-* Add any appropriate continuous integration (e.g. Travis CI) in this directory.
-
-* Remove this `readme.md` file from any repository and replace it with something more appropriate!
-
 ## Important
 * It should be easy to rebuild and run your project and your dissertation
-        * Include clear instructions in the relevant directories to make this possible
+* Include clear instructions in the relevant directories to make this possible
