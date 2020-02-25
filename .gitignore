@@ -1,5 +1,5 @@
 project-workspace.code-workspace
 data/raw/*
+data/processed/*
 !data/raw/example.mgf
 .vscode/settings.json
-status_report/*

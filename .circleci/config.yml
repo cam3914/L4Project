@@ -45,6 +45,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install --upgrade pip
             pip install -r requirements.txt
       - save_cache:
           paths:
@@ -61,10 +62,10 @@ jobs:
             pytest --junitxml=test-reports/junit.xml
 
       - store_test_results:
-          path: test-reports
+          path: src/test-reports
 
       - store_artifacts:
-          path: test-reports    
+          path: src/test-reports    
 
       # # run lints!
       # - run:

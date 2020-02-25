@@ -91,3 +91,12 @@
 ## 12 February
 
 * No meeting, email progress update
+
+## 19th February
+
+* baseline for evaluation: function to find similarity of fingerprint in library
+* need to understand uniqueness of fingerprints, how well a library search method does
+* can use cosine similarity of whole spectra or rmse of each bin
+* paired statistical test for baseline scores and neural net scores
+* use different sizes of data in training to compare network performance
+* start basic, make sure network trains before going too complex where it is easy to run into issues
