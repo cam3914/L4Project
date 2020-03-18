@@ -187,3 +187,98 @@
 * *5 hours* CUDA toolkit and linux fixing
 
 ### 12th Feb
+
+* *0.5 hour* Updating repository and timelog
+* *0.5 hour* Writing update email 
+
+### 13th Feb
+
+* *3.5 hours* Linux/CUDA toolkit fixing
+
+## Week 19 (17 Feb)
+
+### 17th February
+
+* 5 hours* Linux/CUDA toolkit fixing
+
+### 18th February
+
+* *4 hours* Finishing CUDA installation and Keras testing
+* *0.5 hour* Supervisor meeting
+* *0.5 hour* Writing up meeting minutes and timelog
+* *1.5 hour* Writing code to save processed data and read if available
+* *3.5 hours* Adjusting network parameters and adding training visualisations
+
+### 19th February
+
+* *2.5 hours* Single bin network parameter tuning
+* *0.5 hour* Updating Project readme
+
+### 20th February
+
+* *2.5 hours* Comparing single bin predictions to true values
+* *3 hours* Refactoring data_utils
+
+## Week 20 (24th Feb)
+
+### 25th February
+
+* *1 hour* CI and dependency fixes
+* *0.5 hour* Supervisor meeting
+
+### 26th February
+
+* *3 hours* Investigated and fixed non training issue
+
+### 27th February
+
+* *1.5 hours* Preparing data for multiple bin network
+* *2.5 hours* Parameter tuning multi-bin network
+
+## Week 21 (2nd March)
+
+### 2nd March
+
+* *1.5 hours* Started working on fingerprint matching
+
+### 3rd March
+
+* *2 hours* Finish FP matching function
+* *0.5 hour* Supervisor meeting
+* *3 hours* Fingerprint matching testing
+* *2.5 hours* First look at weighted cosine similarity specification
+
+### 4th March
+
+* *3.5 hours* Weighted cosine work
+
+## Week 22 (9th March)
+
+### 9th March
+
+* *2 hours* Weighted cosine researching
+* *4 hours* Finished weighted cosine similarity function 
+
+### 10th March 
+
+* *0.5 hour* Supervisor meeting
+* *2.5 hours* Implement and test simple cosine similarity
+
+### 11th March
+
+* *4.5 hours* Writing spectrum comparison and binned spectra comparison functions
+
+### 12th March
+
+* *2.5 hours* Implementing function to return top n similar molecules
+
+## Week 23 (16th March)
+
+### 17th March
+
+* *3 hours* Attempting to get nonzero predictions from bins 0-50 
+* *0.5 hour* Supervisor meeting
+* *2.5 hours* Bin distribution investigating and multiple bin testing
+* *1.5 hour* Updating meeting notes and timelog
+
+### 18th March

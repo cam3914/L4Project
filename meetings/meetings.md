@@ -88,15 +88,44 @@
 * Need to start thinking about evaluation, possibly an intelligent guesser based on most similar peaks
 * Could normalize by log
 
-## 12 February
+## 11th February
 
 * No meeting, email progress update
 
-## 19th February
+## 18th February
 
-* baseline for evaluation: function to find similarity of fingerprint in library
-* need to understand uniqueness of fingerprints, how well a library search method does
-* can use cosine similarity of whole spectra or rmse of each bin
-* paired statistical test for baseline scores and neural net scores
-* use different sizes of data in training to compare network performance
-* start basic, make sure network trains before going too complex where it is easy to run into issues
+* Baseline for evaluation: function to find similarity of fingerprint in library
+* Need to understand uniqueness of fingerprints, how well a library search method does
+* Can use cosine similarity of whole spectra or rmse of each bin
+* Paired statistical test for baseline scores and neural net scores
+* Use different sizes of data in training to compare network performance
+* Start basic, make sure network trains before going too complex where it is easy to run into issues
+
+## 25th February
+
+* Discussed residual connections between layers, best to leave for final improvements if there is time
+* Single bin results can still be informative
+* Explained non-training with sparse data issue
+* Does small fragment size hold up to GC data?
+* Finding most predictable regions of a spectra is interesting
+
+## 3rd March
+
+* Fixed non-training issue
+* Fingerprint matching done, initially appears to not have matches in data
+* Clarification of dropout, random noise to prevent overfitting
+* In process of implementing cosine similarity
+
+## 10th March
+
+* Weighted cosine similarity done, probably just need regular cosine similarity
+* Data does have matching fingerprints, but statistically insignificant
+* Cosine loss function might improve scores marginally, only do if there is time
+* Training models over different sections of spectra, size ~50 probably good
+* All experiments need to be formatted properly and saved, dont want to reproduce later
+
+## 17th March
+
+* Having trouble with multi-bin network predictions, all zero as it is a relatively small loss
+* Make sure majority of bins are not zero
+* Start smaller and work way up wile adjusting learning rate etc
