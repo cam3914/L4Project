@@ -282,3 +282,65 @@
 * *1.5 hour* Updating meeting notes and timelog
 
 ### 18th March
+
+ * *3 hours* work on model evaluations
+ * *2 hours* Planning recall measurements and fp matching functions
+
+## Week 24 (20th March)
+
+## Week 25 (27th March)
+
+### 27th March
+
+* *2 hours* modifying normalization function 
+
+### 28th March
+
+* *4 hours* Dissertation requirements reading and planning 
+
+### 29th March
+
+* *12 hours* Dissertation research for Introduction and Background research, setting up project template and 
+
+### 30th March
+
+* *6 hours* Writing introduction
+* *4 hours* Citation and reference familiarisation
+
+### 31st March
+
+* *0.5 hours* supervisor meeting
+* *3 hours* finished introduction draft and sent to supervisor
+* *4 hours* data analysis and visualisations
+
+### 1st April
+
+* *2 hours* Recieved intro feedback, finalized introduction
+* *4 hours* Background research and reference gathering
+* *6 hours* Background writing
+
+### 2nd April
+
+* *8 hours* Dissertaion writing
+* *5 hours* refactoring jupyter notebook to make clearer 
+
+### 3rd April
+
+* *10 hours* Dissertation writing
+
+## Week 26 (4th April)
+
+### 4th April
+
+* *6 hours* Dissertation writing
+* *6 hours* Standardising and properly annotating project graphs
+
+### 5th April
+
+* *4 hours* Running final evaluation and uploading diagrams
+* *2 hours* Formatting data for dissertaion 
+* *6 hours* Dissertaion writing
+
+### 6th April
+
+* *18 hours* Finishing writing dissertation, preparing submission materials

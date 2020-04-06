@@ -129,3 +129,14 @@
 * Having trouble with multi-bin network predictions, all zero as it is a relatively small loss
 * Make sure majority of bins are not zero
 * Start smaller and work way up wile adjusting learning rate etc
+
+## 25th March
+
+* Got multi-bin working, probably issue with activations
+* sections should probably be normalized to their local max, not full spectrum max
+* Will try have a draft chapter of dissertation ready by friday but more probably monday
+
+## 31st March
+
+* Update on dissertation intro draft, will send later in the afternoon
+* Not worth recreating diagrams which already exist unless there is time, alright to use ones form other papers with proper referencing
