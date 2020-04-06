@@ -3,6 +3,7 @@ import pandas as pd
 from pyteomics import mgf
 from rdkit import Chem
 from rdkit.Chem import AllChem
+from rdkit import DataStructs
 import spectrum_utils.plot as sup
 import spectrum_utils.spectrum as sus
 import matplotlib.pyplot as plt
@@ -10,7 +11,7 @@ import os.path
 
 
 def getData(filename):
-    """ Use pyteomics to read in data from /data/raw/ folder, check SMILES strung and convert to dataframe
+    """ Use pyteomics to read in data from /data/raw/ folder, check SMILES string and convert to dataframe
 
         Args: filename as string
     """
@@ -42,7 +43,7 @@ def getData(filename):
 
             try:
                 fp = getFingerprint(molecule['SMILES'])
-                molecule['fingerprint'] = np.array(fp)
+                molecule['fingerprint'] = fp
                 mols.append(molecule)
             except:
                 print("unable to generate fp for entry " + str(i))
@@ -82,46 +83,44 @@ def getFingerprint(smiles):
     """ Create rdkit molecule and get Morgan fingerprint
     
         Args: SMILES string
+
+        Taken from Wei et al (2019)
     """ 
     mol = Chem.MolFromSmiles(smiles)
-    info = {}
-    fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, bitInfo=info)
-
-    return fp
+    fp = AllChem.GetHashedMorganFingerprint(mol, 2, nBits=4096)
+    fp_arr = np.zeros(1)
+    DataStructs.ConvertToNumpyArray(fp, fp_arr)
+    return fp_arr
 
 
 def normalize(array):
-    """ Divides each value in array by the max or the array, normalizing to 1
+    """ Divides each value in array by the max of the array and multiplies each value by 1000, normalizing to 1000
 
         Args: numpy array of floats
     """ 
     if max(array) == 0:
         return array
     else:
-        return array / max(array)
+        return np.array((array * 1000 / max(array)), dtype=np.float64)
     
 
 def bin_spectra(data, bin_size):
-    """ Creates bins of specified size over range 0 - 600, sums intensities within bin ranges and 
-        normalizes results to 1
+    """ Creates bins of specified size over range 0 - 2000, sums intensities within bin ranges
     
         Args: dataframe of mols and bin size
     """ 
     if bin_size % 2 != 0 and bin_size != 1:
         raise Exception("bin size must be 1 or even")
 
-    bins = [0]
+    bins = []
 
-    for n in range(1, int(3000/bin_size)):
+    for n in range(0, int(2000/bin_size) + 1):
         bins.append(n * bin_size + 0.5)
-
-    bins.append(3000)
 
     digitized = np.digitize(data['m/z'], bins)
     bin_sums = [data['intensity'][digitized == i].sum() for i in range(len(bins))]
 
-
-    return bin_sums
+    return np.array(bin_sums, dtype=np.float64)
 
 
 def fingerprint_match(fp1, fp2):
@@ -240,13 +239,13 @@ def compare_spectrum(spectrum1, spectrum2):
     spectrum_bottom = sus.MsmsSpectrum(spectrum2['title'], spectrum2['pepmass'][0], spectrum2['charge'][0], spectrum2['m/z'], spectrum2['intensity'])
     spectrum_bottom.filter_intensity(0.01)
 
-    fig, ax = plt.subplots(figsize=(12, 6))
+    _ , ax = plt.subplots(figsize=(12, 6))
     sup.mirror(spectrum_top, spectrum_bottom, ax=ax)
     
     plt.show()
     plt.close()
 
-def get_top_similarity(mol_q, lib, x=10):
+def get_top_cosine_similarity(mol_q, lib, n=10):
     similarities = []
 
     def sort_sim(val):
@@ -257,10 +256,10 @@ def get_top_similarity(mol_q, lib, x=10):
 
     similarities.sort(reverse=True, key=sort_sim)
     
-    return similarities[:x]
+    return similarities[:n]
 
 def compare_bins(true, predicted):
-    
+
     if not np.all(true < 0.1) or not np.all(predicted < 0.1):
         fig, axs = plt.subplots(2, 1)
         a = np.arange(len(true))
@@ -282,3 +281,63 @@ def compare_bins(true, predicted):
         fig.subplots_adjust(hspace=0)
         plt.show()
         plt.close()
+
+def cosine_sim(a, b):
+    """ Takes the binned intensity arrays with the same length and computes the cosine similarity
+    
+        Args: two molecules, with m/z and intensity arrays for the spectrum and a mass
+    """ 
+    dot = a @ b
+    
+    if dot != 0:
+        denom = np.sqrt(np.sum(np.square(a))) * np.sqrt(np.sum(np.square(b)))
+        return dot/denom
+    else:
+        return 0
+
+def get_best_fp_match(fp, lib, n=10):
+    similarities = []
+
+    def sort_sim(val):
+        return val[0]
+
+    for i, lib_fp in enumerate(lib['fingerprint']):
+        similarities.append((fingerprint_match(fp, lib_fp), i))
+
+    similarities.sort(reverse=True, key=sort_sim)
+    
+    return similarities[:n]
+
+
+def get_top_cosine_similarity(vector, lib, n=10):
+    similarities = []
+
+    def sort_sim(val):
+        return val[0]
+
+    for i, mol in enumerate(lib):
+        similarities.append((cosine_sim(vector, mol), i))
+
+    similarities.sort(reverse=True, key=sort_sim)
+    
+    return similarities[:n]
+
+def found_in_top_n(index, vector, lib, n):
+    
+    found = False
+    similarities = get_top_cosine_similarity(vector, lib, n=n)
+    for _, i in similarities:
+        if index == i:
+            found = True
+    
+    return found
+
+def get_rank_at_n_score(predictions, lib, n):
+    
+    in_top_n = 0
+    
+    for i, vector in enumerate(predictions):
+        if found_in_top_n(i, vector, lib, n):
+            in_top_n += 1
+        
+    return (in_top_n/len(predictions)) * 100
